@@ -83,15 +83,15 @@ function App() {
 
   const routes: Route[] = [
     {
-      path: "/",
+      path: "/react-shop-app/",
       element: <Images imgs={images} />,
     },
     {
-      path: "shopping-cart",
+      path: "react-shop-app/shopping-cart",
       element: <ShoppingCart />,
     },
     {
-      path: "*",
+      path: "react-shop-app/*",
       element: <NoPage />,
     },
   ];
@@ -108,7 +108,7 @@ function App() {
             {categories.map((category, id) => {
               return (
                 <Route
-                  path={`${category.tag}`}
+                  path={`react-shop-app/${category.tag}`}
                   element={<ItemShop section={category.name} />}
                   key={id}
                 />
@@ -116,7 +116,7 @@ function App() {
             })}
             {
               categories.map((category)=>{
-                return category.subcategories.map((subcat,id)=> <Route path={`${category.tag}-${subcat}`} element={<ItemShop section={category.name}/>} key={id}/>)
+                return category.subcategories.map((subcat,id)=> <Route path={`react-shop-app/${category.tag}-${subcat}`} element={<ItemShop section={category.name}/>} key={id}/>)
               })
             }
           </Routes>

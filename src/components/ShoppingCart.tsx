@@ -1,5 +1,5 @@
-import { useShoppingCart } from "./useShoppingCart";
-import ShoppingCartItem from "./ShoppingCartItem";
+import { useShoppingCart } from "./useShoppingCart.tsx";
+import ShoppingCartItem from "./ShoppingCartItem.tsx";
 
 export default function ShoppingCart() {
   const { items, fullPrice } = useShoppingCart();

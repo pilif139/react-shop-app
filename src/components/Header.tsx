@@ -2,7 +2,7 @@ import DropdownMenu from "./DropDownMenu";
 import { Link } from "react-router-dom";
 import { CiShoppingBasket } from "react-icons/ci";
 import { useShoppingCart } from "./useShoppingCart";
-import {Category} from './App'
+import {Category} from '../App'
 
 interface Props{
     title: string;

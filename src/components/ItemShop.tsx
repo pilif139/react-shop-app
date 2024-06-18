@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
-import Product from "./Product";
-import imgs from "./images";
+import Product from "./Product.tsx";
+import imgs from "../images";
 
 interface Props {
   section: string;

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import {Image} from './App'
+import {Image} from '../App'
 
 interface Props{
   imgs: Image[]

@@ -1,13 +1,15 @@
-import Header from "./Header.tsx";
-import Images from "./Images.tsx";
-import ItemShop from "./ItemShop.tsx";
-import Footer from "./Footer.tsx";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ShoppingCart from "./ShoppingCart.tsx";
-import { ShoppingCartProvider } from "./useShoppingCart.tsx";
-import imgs from "./images.ts";
+import Header from "./components/Header.tsx";
+import Images from "./components/Images.tsx";
+import ItemShop from "./components/ItemShop.tsx";
+import Footer from "./components/Footer.tsx";
+import ShoppingCart from "./components/ShoppingCart.tsx";
+import NoPage from "./components/NoPage.tsx";
+import { ShoppingCartProvider } from "./components/useShoppingCart.tsx";
+
 import { ReactNode } from "react";
-import NoPage from "./NoPage.tsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import imgs from "./images.ts";
 
 export interface Category {
   name: string;
@@ -23,6 +25,7 @@ export interface Image {
 interface Route {
   path: string;
   element: ReactNode;
+  index?: boolean;
 }
 
 function App() {
@@ -69,7 +72,7 @@ function App() {
     },
     {
       src: imgs[1],
-      tag: "women",
+      tag: "woman",
     },
     {
       src: imgs[2],
@@ -94,6 +97,7 @@ function App() {
       path: "react-shop-app/*",
       element: <NoPage />,
     },
+
   ];
 
   return (

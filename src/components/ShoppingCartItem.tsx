@@ -1,4 +1,4 @@
-import { CartItem, useShoppingCart } from "./useShoppingCart";
+import { CartItem, useShoppingCart } from "./useShoppingCart.tsx";
 import { ChangeEvent } from "react";
 
 interface Props{

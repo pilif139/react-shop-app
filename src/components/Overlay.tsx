@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import "./Overlay.css"
+import "../styles/Overlay.css"
 
 interface OverlayProps {
     isOpen: boolean;

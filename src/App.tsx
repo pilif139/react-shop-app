@@ -84,48 +84,36 @@ function App() {
     },
   ];
 
-  const routes: Route[] = [
-    {
-      path: "/react-shop-app/",
-      element: <Images imgs={images} />,
-    },
-    {
-      path: "react-shop-app/shopping-cart",
-      element: <ShoppingCart />,
-    },
-    {
-      path: "react-shop-app/*",
-      element: <NoPage />,
-    },
-
-  ];
-
   return (
     <ShoppingCartProvider>
       <main className="h-full font-radio-canada-big flex-col center max-w-dvw overflow-x-hidden">
         <BrowserRouter>
           <Header title="Sklep" categories={categories}></Header>
           <Routes>
-            {routes.map((route, id) => (
-              <Route path={route.path} element={route.element} key={id} />
+            <Route index path="/react-shop-app" element={<Images imgs={images} />} />
+            <Route path="/react-shop-app/shopping-cart" element={<ShoppingCart />} />
+            {/* categories routes */}
+            {categories.map((category, id) => (
+              <Route
+                path={`/react-shop-app/${category.tag}`}
+                element={<ItemShop section={category.name} />}
+                key={id}
+              />
             ))}
-            {categories.map((category, id) => {
-              return (
+            {/*subcategories routes*/}
+            {categories.map((category) =>
+              category.subcategories.map((subcat, id) => (
                 <Route
-                  path={`react-shop-app/${category.tag}`}
+                  path={`/react-shop-app/${category.tag}-${subcat}`}
                   element={<ItemShop section={category.name} />}
                   key={id}
                 />
-              );
-            })}
-            {
-              categories.map((category)=>{
-                return category.subcategories.map((subcat,id)=> <Route path={`react-shop-app/${category.tag}-${subcat}`} element={<ItemShop section={category.name}/>} key={id}/>)
-              })
-            }
+              ))
+            )}
+            <Route path="/react-shop-app/*" element={<NoPage />} />
           </Routes>
+          <Footer></Footer>
         </BrowserRouter>
-        <Footer></Footer>
       </main>
     </ShoppingCartProvider>
   );

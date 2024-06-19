@@ -45,8 +45,8 @@ export default function ItemShop({ section }: Props) {
   ];
 
   const pathTag = useLocation().pathname.split("/").pop()
-  let filteredProducts: Product[] | null = null;
-  if (pathTag) {
+  let filteredProducts: Product[] | null;
+  if (pathTag){
     if (pathTag?.includes("-")) {
       let name = pathTag.split("-")[1];
       const tag = pathTag.split("-")[0]

@@ -7,7 +7,7 @@ export default function ShoppingCart() {
   return (
     <div className="min-h-4-6 p-6">
       <h1 className="text-2xl mb-6 col-span-full">Shopping Cart</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-0 md:grid-cols-1 lg:grid-cols-3 gap-4 col-span-full">
+      <div className="grid grid-cols-1 sm:grid-cols-0 md:grid-cols-1 lg:grid-cols-3 gap-2 col-span-full">
         {items.map((item, id) => {
           return (
             <ShoppingCartItem item={item} id={id} key={id}/>

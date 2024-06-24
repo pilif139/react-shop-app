@@ -14,7 +14,7 @@ function Header({title, categories}:Props) {
 
     return (
         <header className=" bg-indigo-100  w-full h-1/6 p-5 transition-colors hover:bg-indigo-200 sticky top-0">
-            <h1 className="flex w-min p-2 pl-0 text-5xl ml-1 hover:bg-indigo-300 transition-colors rounded-xl cursor-pointer">
+            <h1 className="flex w-min p-2 pl-0 text-5xl md:text-4xl sm:p-0 ml-1 hover:bg-indigo-300 transition-colors rounded-xl cursor-pointer">
                 <Link to='/react-shop-app/'>
                     {title}
                 </Link>

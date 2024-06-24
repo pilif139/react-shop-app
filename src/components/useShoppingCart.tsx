@@ -52,7 +52,7 @@ const addItem = (item: CartItem) => {
         if(ItemToRemove){
             setFullPrice((prevPrice)=>prevPrice - ItemToRemove.price * ItemToRemove.quantity)
         }
-        return prevItems.filter((item)=>item.name !== itemName);
+        return prevItems.filter((item)=>item.name !== itemName || item.size !== size);
     });
   };
 

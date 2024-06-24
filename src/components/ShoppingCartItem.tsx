@@ -7,13 +7,13 @@ interface Props{
 }
 
 export default function ShoppingCartItem({item, id} :Props) {
-    const {removeItem, changeItemQuantity} = useShoppingCart();
+    const {removeItem, addItem} = useShoppingCart();
 
-    const handleChangeQuantity = (item: CartItem,number:number, e :React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
-        if(item.quantity === 0 && number === -1) return;
+    const handleChangeQuantity = (item: CartItem,num:number, e :React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+        if(item.quantity === 0 && num === -1) return;
         if(item.quantity>=0 && item.quantity<1000) {
             e.preventDefault();
-            changeItemQuantity(item, number)
+            addItem({...item, quantity: num});
         }
       }
 
@@ -27,17 +27,17 @@ export default function ShoppingCartItem({item, id} :Props) {
                 Ilość: <span className="font-bold ml-1">{item.quantity}</span>
                 <button
                     className="bg-red-300 px-3 py-1 text-2xl m-2 rounded-xl hover:bg-red-600 transition-colors"
-                    onClick={(e)=>handleChangeQuantity(item, item.quantity-1,e)}
+                    onClick={(e)=>handleChangeQuantity(item, -1,e)}
                 >-</button>
                 <button
                     className="bg-blue-300 px-3 py-1 text-2xl m-2 rounded-xl hover:bg-blue-600 transition-colors"
-                    onClick={(e)=>handleChangeQuantity(item, item.quantity+1,e)}
+                    onClick={(e)=>handleChangeQuantity(item, 1,e)}
                 >+</button>
             </div>
             <div className="mx-2 p-2 rounded-lg bg-slate-700">{item.price*item.quantity}zł ({item.price}zł)</div>
             <button
                 className="bg-red-500 p-3 rounded-xl hover:bg-red-600 transition-colors"
-                onClick={() => removeItem(item.name)}
+                onClick={() => removeItem(item.name, item.size)}
             >
                 Usuń
             </button>

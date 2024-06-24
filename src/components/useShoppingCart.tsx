@@ -11,9 +11,8 @@ export interface CartItem{
 interface ShoppingCart{
 	items: CartItem[];
 	fullPrice: number;
-  addItem: (item: CartItem) => void;
-  removeItem: (itemName: string) => void;
-  changeItemQuantity: (item:CartItem, number:number)=>void;
+    addItem: (item: CartItem) => void;
+    removeItem: (itemName: string, size:string) => void;
 }
 
 const ShoppingCartContext = createContext<ShoppingCart | undefined>(undefined);
@@ -25,24 +24,6 @@ type Props = {
 export function ShoppingCartProvider({children}: Props) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [fullPrice, setFullPrice] = useState<number>(0);
-
-  const changeItemQuantity = (item: CartItem, number: number) => {
-    setItems((prevItems) => {
-        const itemToChange = prevItems.findIndex((it) => it.name === item.name);
-        if (itemToChange !== -1) {
-            setFullPrice((prevPrice) => prevPrice - item.price * item.quantity + item.price * number);
-            console.log("changed price")
-            const updatedItems = [...prevItems];
-            updatedItems[itemToChange] = {
-                ...updatedItems[itemToChange],
-                quantity: number,
-            };
-            return updatedItems;
-        }
-        return [...prevItems, item];
-    });
-};
-
 
 const addItem = (item: CartItem) => {
   setItems((prevItems) => {
@@ -65,9 +46,9 @@ const addItem = (item: CartItem) => {
   setFullPrice((prevPrice) => prevPrice + item.price * item.quantity);
 };
 
-  const removeItem = (itemName: string) =>{
+  const removeItem = (itemName: string, size: string) =>{
     setItems((prevItems)=>{
-        const ItemToRemove = prevItems.find((item)=>item.name === itemName);
+        const ItemToRemove = prevItems.find((item)=>item.name === itemName && item.size === size);
         if(ItemToRemove){
             setFullPrice((prevPrice)=>prevPrice - ItemToRemove.price * ItemToRemove.quantity)
         }
@@ -84,7 +65,7 @@ const addItem = (item: CartItem) => {
   },[fullPrice])
 
   return (
-    <ShoppingCartContext.Provider value={{ items, fullPrice, addItem, removeItem, changeItemQuantity}}>
+    <ShoppingCartContext.Provider value={{ items, fullPrice, addItem, removeItem}}>
         {children}
     </ShoppingCartContext.Provider>
   );

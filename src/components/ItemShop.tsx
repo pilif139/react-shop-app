@@ -78,7 +78,7 @@ export default function ItemShop() {
               key={id}
             />
           ))}
-        {filteredProducts === null && (
+        {filteredProducts.length === 0 && (
           <div className="text-xl ml-12 text-red-500">Brak produktów</div>
         )}
       </div>

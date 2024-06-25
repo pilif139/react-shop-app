@@ -10,5 +10,10 @@ export default {
       'radio-canada-big': ['"Radio Canada Big"']
     }
   },
+  variants: {
+    extend: {
+      placeholderColor: ['active', 'focus'],
+    },
+  },
   plugins: [],
 }

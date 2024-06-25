@@ -45,6 +45,7 @@ export default function ItemShop() {
     const searchParams = new URLSearchParams(location.search);
     const tag = searchParams.get('tag');
     const subcategory = searchParams.get('subcategory');
+    const search = searchParams.get('search');
     if(tag && subcategory){
         filteredProducts = products.filter(
         (product) => product.tag.includes(tag) && product.name.includes(subcategory)
@@ -54,6 +55,11 @@ export default function ItemShop() {
         filteredProducts = products.filter(
         (product) => product.tag.includes(tag)
         );
+    }
+    else if(search){
+      filteredProducts = products.filter(
+          (product) => product.name.toLowerCase().includes(search.toLowerCase()) || product.tag.toLowerCase().includes(search.toLowerCase())
+      );
     }
 
   return (

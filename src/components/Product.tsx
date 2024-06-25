@@ -1,4 +1,4 @@
-import { useShoppingCart } from "./useShoppingCart.tsx";
+import { useShoppingCart } from "../hooks/useShoppingCart.tsx";
 import Overlay from "./Overlay";
 import SizeMenu from "./SizeMenu";
 import { useState } from "react";

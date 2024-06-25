@@ -4,8 +4,7 @@ import ItemShop from "./components/ItemShop.tsx";
 import Footer from "./components/Footer.tsx";
 import ShoppingCart from "./components/ShoppingCart.tsx";
 import NoPage from "./components/NoPage.tsx";
-import { ShoppingCartProvider } from "./components/useShoppingCart.tsx";
-
+import { ShoppingCartProvider } from "./hooks/useShoppingCart.tsx";
 import { ReactNode } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 

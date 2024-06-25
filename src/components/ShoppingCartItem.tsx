@@ -1,4 +1,4 @@
-import { CartItem, useShoppingCart } from "./useShoppingCart.tsx";
+import { CartItem, useShoppingCart } from "../hooks/useShoppingCart.tsx";
 import React from "react";
 
 interface Props{

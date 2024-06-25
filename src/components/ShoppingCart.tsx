@@ -1,4 +1,4 @@
-import { useShoppingCart } from "./useShoppingCart.tsx";
+import { useShoppingCart } from "../hooks/useShoppingCart.tsx";
 import ShoppingCartItem from "./ShoppingCartItem.tsx";
 
 export default function ShoppingCart() {

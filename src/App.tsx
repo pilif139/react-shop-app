@@ -92,24 +92,7 @@ function App() {
           <Routes>
             <Route index path="/react-shop-app" element={<Images imgs={images} />} />
             <Route path="/react-shop-app/shopping-cart" element={<ShoppingCart />} />
-            {/* categories routes */}
-            {categories.map((category, id) => (
-              <Route
-                path={`/react-shop-app/${category.tag}`}
-                element={<ItemShop section={category.name} />}
-                key={id}
-              />
-            ))}
-            {/*subcategories routes*/}
-            {categories.map((category) =>
-              category.subcategories.map((subcat, id) => (
-                <Route
-                  path={`/react-shop-app/${category.tag}-${subcat}`}
-                  element={<ItemShop section={category.name} />}
-                  key={id}
-                />
-              ))
-            )}
+            <Route path="/react-shop-app/item-shop" element={<ItemShop/>}></Route>
             <Route path="/react-shop-app/*" element={<NoPage />} />
           </Routes>
           <Footer></Footer>

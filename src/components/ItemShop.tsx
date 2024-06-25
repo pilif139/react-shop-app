@@ -2,10 +2,6 @@ import { useLocation } from "react-router-dom";
 import Product from "./Product.tsx";
 import imgs from "../images";
 
-interface Props {
-  section: string;
-}
-
 interface Product {
   name: string;
   price: number;
@@ -14,8 +10,8 @@ interface Product {
   tag: string;
 }
 
-export default function ItemShop({ section }: Props) {
-  const products = [
+export default function ItemShop() {
+  const products : Product[] = [
     { name: "T-Shirt Basic", price: 35, img: imgs[3], tag: "men" },
     { name: "Jeansy Slim", price: 75, img: imgs[0], tag: "men" },
     { name: "Spodnie Chinos", price: 65, img: imgs[4], tag: "men" },
@@ -44,34 +40,26 @@ export default function ItemShop({ section }: Props) {
     { name: "Skateboard Deck", price: 75, img: imgs[2], tag: "sport" },
   ];
 
-  const pathTag = useLocation().pathname.split("/").pop()
-  let filteredProducts: Product[] | null;
-  if (pathTag){
-    if (pathTag?.includes("-")) {
-      let name = pathTag.split("-")[1];
-      const tag = pathTag.split("-")[0]
-      filteredProducts = products.filter(
-        (product) =>{
-          if(name.includes("%20")){
-            name = name.replace(/%20/g, " ");
-          }
-          return product.name.includes(name) &&
-          product.tag.includes(tag)
-        }
-      );
-    } else {
-      filteredProducts = products.filter((product) =>
-        product.tag.includes(pathTag)
-      );
+    let filteredProducts = products;
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const tag = searchParams.get('tag');
+    const subcategory = searchParams.get('subcategory');
+    if(tag && subcategory){
+        filteredProducts = products.filter(
+        (product) => product.tag.includes(tag) && product.name.includes(subcategory)
+        );
     }
-  } else {
-    filteredProducts = null;
-  }
+    else if(tag){
+        filteredProducts = products.filter(
+        (product) => product.tag.includes(tag)
+        );
+    }
 
   return (
     <>
       <h1 className="text-4xl mt-6 ml-10 w-fit hover:shadow-2xl hover:bg-indigo-100 p-2 rounded-xl transition-all">
-        {section}
+        {tag && tag[0].toUpperCase() + tag.slice(1)}
       </h1>
       <div className=" min-h-4-6 grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-2 p-4 pt-0">
         {filteredProducts &&

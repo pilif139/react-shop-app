@@ -11,7 +11,7 @@ export default function Images({imgs}: Props) {
     <div className='bg-indigo-50 h-4/6'>
     <div className="h-full w-full flex overflow-x-scroll overflow-hidden">
       {imgs.map((image, id) => (
-        <Link to={`/react-shop-app/${image.tag}`} key={id} className="flex-shrink-0">
+        <Link to={`/react-shop-app/item-shop?tag=${image.tag}`} key={id} className="flex-shrink-0">
           <img
             className="rounded-3xl w-full h-full cursor-pointer hover:border-8 hover:border-indigo-600 transition-all"
             src={image.src} 

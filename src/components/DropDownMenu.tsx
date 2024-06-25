@@ -1,14 +1,42 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
+import {useAPI} from "../hooks/useAPI.tsx";
+
+interface Product{
+    id: number;
+    title: string;
+    price: number;
+    description: string;
+    category: string;
+    img: string;
+    rating: {
+      rate: number;
+      count: number;
+    }
+}
 
 interface Props {
   name: string;
   tag: string;
-  subcategories: string[];
 }
 
-export default function DropdownMenu({ name,tag, subcategories }: Props) {
+export default function DropdownMenu({ name, tag }: Props) {
   const [show, setShow] = useState<boolean>(false);
+  const [subcategories, setSubcategories] = useState<string[]>([]);
+  const [ids, setIds] = useState<number[]>([]);
+  const api = useAPI();
+
+  useEffect(() => {
+    api.get().then((products: Product[]) => {
+      products
+          .filter(product => product.category === name)
+          .forEach(product => {
+            setSubcategories((prev) => [...prev, product.title]);
+            setIds((prev) => [...prev, product.id]);
+          });
+    });
+      }, []);
+
 
   return (
     <div 

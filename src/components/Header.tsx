@@ -5,7 +5,7 @@ import { useShoppingCart } from "../hooks/useShoppingCart.tsx";
 import {Category} from '../App'
 import Search from "./Search.tsx";
 import {useAPI} from "../hooks/useAPI.tsx";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 interface Props{
     title: string;
@@ -15,14 +15,11 @@ interface Props{
 function Header({title}:Props) {
     const {fullPrice} = useShoppingCart();
     const [categories, setCategories] = useState<string[]>([]);
-    const [subcategories, setSubcategories] = useState<string[]>([]);
 
     useAPI().get("categories").then((data) => {
         setCategories(data);
     });
-    useAPI().get("title").then((data) => {
-        setSubcategories(data);
-    });
+
 
     return (
         <header className="flex md:justify-between md:items-center items-center flex-col md:flex-row bg-indigo-100  w-full md:h-1/6 h-fit p-5 transition-colors hover:bg-indigo-200 sticky top-0">
@@ -33,7 +30,7 @@ function Header({title}:Props) {
               </Link>
             </h1>
             <nav className="flex">
-              {categories.map((category, id) => <DropdownMenu key={id} name={category} tag={category.tag} subcategories={category.subcategories}></DropdownMenu>)}
+              {categories.map((category, id) => <DropdownMenu key={id} name={category} tag={category.split("'")[0]}></DropdownMenu>)}
             </nav>
           </div>
           <Search/>

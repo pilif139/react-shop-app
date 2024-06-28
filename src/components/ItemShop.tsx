@@ -64,7 +64,7 @@ export default function ItemShop() {
 
   return (
     <>
-      <h1 className="text-4xl mt-6 ml-10 w-fit hover:shadow-2xl hover:bg-indigo-100 p-2 rounded-xl transition-all">
+      <h1 className="text-4xl mt-6 ml-10 w-fit hover:shadow-2xl hover:bg-indigo-100 dark:hover:bg-slate-500 p-2 rounded-xl transition-all">
         {tag && tag[0].toUpperCase() + tag.slice(1)}
       </h1>
       <div className=" min-h-4-6 grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-2 p-4 pt-0">
@@ -79,7 +79,7 @@ export default function ItemShop() {
             />
           ))}
         {filteredProducts.length === 0 && (
-          <div className="text-xl ml-12 text-red-500">Brak produktów</div>
+          <div className="text-xl ml-12 text-red-700">Brak produktów</div>
         )}
       </div>
     </>

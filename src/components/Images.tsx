@@ -8,7 +8,7 @@ interface Props{
 export default function Images({imgs}: Props) {
 
   return (
-    <div className='bg-indigo-50 h-4/6'>
+    <div className='bg-indigo-50 dark:bg-slate-600 h-4/6'>
     <div className="h-full w-full flex overflow-x-scroll overflow-hidden">
       {imgs.map((image, id) => (
         <Link to={`/react-shop-app/item-shop?tag=${image.tag}`} key={id} className="flex-shrink-0">

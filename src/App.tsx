@@ -10,6 +10,7 @@ import { ReactNode } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import imgs from "./images.ts";
+import DarkModeToggler from "./components/DarkModeToggler.tsx";
 
 export interface Category {
   name: string;
@@ -86,7 +87,7 @@ function App() {
 
   return (
     <ShoppingCartProvider>
-      <main className="h-full font-radio-canada-big flex-col center max-w-dvw overflow-x-hidden">
+      <main className="h-full font-radio-canada-big flex-col center max-w-dvw overflow-x-hidden dark:bg-slate-600 dark:text-white transition-colors">
         <BrowserRouter>
           <Header title="Sklep" categories={categories}></Header>
           <Routes>
@@ -96,6 +97,7 @@ function App() {
             <Route path="/react-shop-app/*" element={<NoPage />} />
           </Routes>
           <Footer></Footer>
+          <DarkModeToggler/>
         </BrowserRouter>
       </main>
     </ShoppingCartProvider>

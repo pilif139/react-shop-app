@@ -12,8 +12,8 @@ export default function Overlay({isOpen, onClose, children}: OverlayProps){
         <>
             {isOpen && (
                 <div className="overlay">
-                    <div className="overlay-background" onClick={onClose} />
-                    <div className="overlay-container">
+                    <div className="overlay-background dark:bg-[rgba(0,0,0,0.8)]" onClick={onClose} />
+                    <div className="overlay-container dark:bg-slate-800 dark:hover:bg-slate-900 dark:transition-colors">
                         <div className="overlay-controls">
                             <button
                                 className="overlay-close"

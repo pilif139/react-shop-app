@@ -16,7 +16,7 @@ export default function SizeMenu({ onClick, size, name, setSize }: Props) {
       <div className="border-4 border-indigo-900 rounded-3xl p-2">
         Wybierz rozmiar:
         <select
-          className="border-2 border-indigo-600 hover:bg-indigo-500 text-black hover:text-white transition-colors rounded-xl mx-2"
+          className="border-2 border-indigo-600 dark:border-slate-700 hover:bg-indigo-500 dark:hover:bg-slate-400 text-black hover:text-white transition-colors rounded-xl mx-2"
           name="size"
           id="size"
           value={size}
@@ -30,7 +30,7 @@ export default function SizeMenu({ onClick, size, name, setSize }: Props) {
           <option value="XL">XL</option>
         </select>
         <button
-          className="bg-indigo-700 text-white p-2 rounded-xl hover:bg-indigo-900 transition-colors"
+          className="bg-indigo-700 dark:bg-slate-500 text-white p-2 rounded-xl hover:bg-indigo-900 transition-colors"
           onClick={onClick}
         >
           Potwierdź

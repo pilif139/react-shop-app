@@ -15,5 +15,6 @@ export default {
       placeholderColor: ['active', 'focus'],
     },
   },
+  darkMode: 'selector',
   plugins: [],
 }

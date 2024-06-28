@@ -33,13 +33,13 @@ export default function Product({name,price, img, alt, tag}: Props) {
   }
   return (
     <>
-      <div className="col-auto flex flex-col justify-between text-white w-80 bg-indigo-400 hover:bg-indigo-500 transition-all m-5 rounded-2xl p-5 hover:shadow-2xl  max-h-96">
+      <div className="col-auto flex flex-col justify-between text-white w-80 bg-indigo-400 dark:bg-slate-500 dark:hover:bg-slate-700 hover:bg-indigo-500 transition-all m-5 rounded-2xl p-5 hover:shadow-2xl  max-h-96">
           <div className="flex mb-4 justify-between items-center">
             <span className=" text-2xl">{name}</span>
             <div className="text-xl bg-red-400 rounded-xl flex p-2">{price}zł</div>
           </div>
           <img src={img} alt={alt} className="h-48 rounded-xl"/>
-          <button className=" bg-slate-100 hover:bg-indigo-900 hover:text-white transition-colors text-black p-2 mt-4 cursor-pointer w-full rounded-xl" onClick={()=>setShowOverlay(true)}>Dodaj do koszyka</button>
+          <button className=" bg-slate-100 dark:bg-slate-600 dark:text-white hover:bg-indigo-900 dark:hover:bg-slate-800 hover:text-white transition-colors text-black p-2 mt-4 cursor-pointer w-full rounded-xl" onClick={()=>setShowOverlay(true)}>Dodaj do koszyka</button>
       </div>
       { createPortal(
         <Overlay isOpen={showOverlay} onClose={()=>setShowOverlay(!showOverlay)}>

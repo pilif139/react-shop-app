@@ -2,6 +2,7 @@ import { useShoppingCart } from "./useShoppingCart.tsx";
 import Overlay from "./Overlay";
 import SizeMenu from "./SizeMenu";
 import { useState } from "react";
+import {createPortal} from "react-dom";
 
 interface Props{
     name: string;
@@ -40,9 +41,11 @@ export default function Product({name,price, img, alt, tag}: Props) {
           <img src={img} alt={alt} className="h-48 rounded-xl"/>
           <button className=" bg-slate-100 hover:bg-indigo-900 hover:text-white transition-colors text-black p-2 mt-4 cursor-pointer w-full rounded-xl" onClick={()=>setShowOverlay(true)}>Dodaj do koszyka</button>
       </div>
+      { createPortal(
         <Overlay isOpen={showOverlay} onClose={()=>setShowOverlay(!showOverlay)}>
             <SizeMenu onClick={handleClick} size={size} name={name} setSize={setSize}></SizeMenu>
-        </Overlay>
+        </Overlay>,document.querySelector("main") as HTMLElement)
+      }
     </>
   )
 }

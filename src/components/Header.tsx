@@ -27,7 +27,7 @@ function Header({title, categories}:Props) {
           </div>
           <Search/>
           <Link to="/react-shop-app/shopping-cart"
-                className="flex items-center space-x-2 bg-indigo-300 hover:bg-indigo-400 hover:shadow-2xl p-4 rounded-full transition-all h-min py-4 w-min">
+                className="flex items-center space-x-2 bg-indigo-300 hover:bg-indigo-400 hover:shadow-2xl p-4 rounded-full transition-all h-min py-4 w-fit">
             <p className="text-lg font-semibold">{fullPrice === 0 ? "Koszyk pusty" : fullPrice + "zł"}</p>
             <CiShoppingBasket className="text-5xl"/>
           </Link>

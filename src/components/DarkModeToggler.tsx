@@ -15,7 +15,7 @@ function DarkModeToggler() {
   },[theme])
 
   return (
-    <button className="bg-gray-800 text-white p-5 rounded-3xl absolute bottom-5 right-5"
+    <button className="transition-colors dark:bg-gray-900 bg-indigo-500 text-white p-5 rounded-3xl absolute bottom-7 right-7 scale-[1.12]"
       onClick={() => {
         setTheme(theme === 'dark' ? 'light' : 'dark');
       }}

@@ -13,7 +13,7 @@ export default function Search() {
   }
 
   return (
-      <div ref={divRef} className="flex items-center space-x-2 bg-indigo-300 dark:bg-slate-600 hover:bg-indigo-400 dark:hover:bg-slate-700 hover:shadow-2xl p-4 py-5 rounded-full transition-all h-min m-5 md:m-0 w-min absolute left-[45%]">
+      <div ref={divRef} className="flex items-center space-x-2 bg-indigo-300 dark:bg-slate-600 hover:bg-indigo-400 dark:hover:bg-slate-700 hover:shadow-2xl p-4 py-5 rounded-full transition-all h-min m-5 md:m-0 w-min">
         <input type="text" className="p-2 rounded-full focus:outline-none focus:placeholder-black transition-colors dark:text-black" placeholder="Szukaj produktów" value={search} onChange={(e)=>setSearch(e.target.value)}
          onFocus={()=>divRef.current?.classList.add('bg-indigo-400 dark:bg-slate-800')} onBlur={()=>divRef.current?.classList.remove('bg-indigo-400 dark:bg-slate-800')}
         />
